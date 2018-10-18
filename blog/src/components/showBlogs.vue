@@ -11,6 +11,8 @@
 
 
 <script>
+  import searchMixin from '../mixins/searchMixin'
+
     export default {
       data() {
         return {
@@ -28,11 +30,7 @@
         })
       },
       computed: {
-        filteredBlogs: function () {
-          return this.blogs.filter((blog)=>{
-            return blog.title.match(this.search);
-          });
-        }
+
       },
       directives:{
         'rainbow': {
@@ -45,7 +43,8 @@
         'snippet': function (value) {
           return value.slice(0, 100) + "..."
         }
-      }
+      },
+      mixins: [searchMixin]
     }
 </script>
 
