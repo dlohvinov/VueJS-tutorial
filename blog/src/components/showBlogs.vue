@@ -9,6 +9,7 @@
   </div>
 </template>
 
+
 <script>
     export default {
       data() {
@@ -31,6 +32,18 @@
           return this.blogs.filter((blog)=>{
             return blog.title.match(this.search);
           });
+        }
+      },
+      directives:{
+        'rainbow': {
+          bind(el, binding, vnode) {
+            el.style.color = "#" + Math.random().toString(16).slice(2,8);
+          }
+        }
+      },
+      filters: {
+        'snippet': function (value) {
+          return value.slice(0, 100) + "..."
         }
       }
     }
