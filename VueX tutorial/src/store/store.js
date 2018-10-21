@@ -13,14 +13,21 @@ export const store = new Vuex.Store({
     ]
   },
   getters: {
-    saleProducts: function(state){
+    saleProducts: function (state) {
       var saleProducts = state.products.map(product => {
         return {
-          name:'**'+product.name + '**',
-          price: product.price/2
+          name: '**' + product.name + '**',
+          price: product.price / 2
         }
       });
       return saleProducts;
+    }
+  },
+  mutations: {
+    reducePrice: function (state) {
+      state.products.forEach(product => {
+        product.price -= 1
+      })
     }
   }
 });
